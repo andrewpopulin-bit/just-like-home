@@ -28,9 +28,9 @@
   --maxw: 1180px;
   --pad: clamp(20px, 5vw, 64px);
 
-  --f-display: "Playfair Display", Georgia, "Times New Roman", serif;
-  --f-body: "Hanken Grotesk", system-ui, -apple-system, sans-serif;
-  --f-hand: "Caveat", cursive;
+  --f-display: Arial, Helvetica, sans-serif;
+  --f-body: Arial, Helvetica, sans-serif;
+  --f-hand: Arial, Helvetica, sans-serif;
 }
 
 *,*::before,*::after{ box-sizing:border-box; }
@@ -91,8 +91,8 @@ p{ margin:0 0 1em; }
 .brand{ display:flex; align-items:center; gap:.62rem; }
 .brand__mark{ width:42px; height:42px; flex:none; }
 .brand__text{ display:flex; flex-direction:column; line-height:1; }
-.brand__name{ font-family:var(--f-hand); font-size:1.72rem; font-weight:600; color:var(--rose-deep); letter-spacing:0; line-height:.85; }
-.brand__sub{ font-family:var(--f-display); font-size:.6rem; font-style:italic; letter-spacing:.14em; text-transform:uppercase; color:var(--clay); margin-top:2px; }
+.brand__name{ font-family:var(--f-display); font-size:1.24rem; font-weight:700; color:var(--rose-deep); letter-spacing:.01em; line-height:1; }
+.brand__sub{ font-family:var(--f-display); font-size:.6rem; letter-spacing:.16em; text-transform:uppercase; color:var(--clay); margin-top:3px; }
 
 .nav{ display:flex; align-items:center; gap:1.8rem; }
 .nav__links{ display:flex; gap:1.5rem; list-style:none; margin:0; padding:0; }
@@ -186,7 +186,7 @@ body.nav-open .nav-toggle span::after{ transform:translate(-50%,0) rotate(-45deg
 .about__stamp{ position:absolute; bottom:-22px; right:-14px; background:#fff; border-radius:50%; width:118px; height:118px; display:grid; place-items:center; text-align:center; box-shadow:var(--shadow-md); border:2px dashed var(--blush); }
 .about__stamp b{ font-family:var(--f-display); font-size:1.7rem; color:var(--rose-deep); line-height:1; }
 .about__stamp small{ font-size:.62rem; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft); }
-.sig{ font-family:var(--f-hand); font-size:2.1rem; color:var(--rose-deep); line-height:1; margin-top:.4em; }
+.sig{ font-family:var(--f-display); font-style:italic; font-weight:700; font-size:1.35rem; color:var(--rose-deep); line-height:1; margin-top:.6em; }
 .about h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 .about p{ color:var(--ink-soft); }
 

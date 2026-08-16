@@ -1,4 +1,4 @@
-/* Homebody Pet Sitting — mockup interactions (lightweight, no libraries) */
+/* Just Like Home by Nicole - site interactions (lightweight, no libraries) */
 (function () {
   'use strict';
 
@@ -49,21 +49,38 @@
     });
   });
 
-  // --- booking form (mock: no backend, friendly confirmation) ---
+  // --- booking form: opens the visitor's email pre-filled to Nicole ---
+  // (Works with no backend. To switch to a hosted form later, point the
+  //  <form> action at Formspree and remove this handler.)
   var form = document.getElementById('enquiryForm');
   if (form) {
     form.addEventListener('submit', function (ev) {
       ev.preventDefault();
+      var val = function (n) {
+        var el = form.querySelector('[name="' + n + '"]');
+        return el ? el.value.trim() : '';
+      };
+      var name = val('name') || 'there';
+      var body = [
+        'Name: ' + val('name'),
+        'Phone: ' + val('phone'),
+        'Email: ' + val('email'),
+        'Service: ' + val('service'),
+        'Dog(s): ' + val('pet'),
+        'Dates: ' + val('from') + ' to ' + val('to'),
+        '',
+        val('msg')
+      ].join('\n');
+      var mailto = 'mailto:jlh.petservice@gmail.com'
+        + '?subject=' + encodeURIComponent('Booking enquiry from ' + (val('name') || 'the website'))
+        + '&body=' + encodeURIComponent(body);
       var ok = document.getElementById('formOk');
-      var name = (form.querySelector('[name="name"]') || {}).value || 'there';
       if (ok) {
-        ok.textContent = 'Thanks ' + name.split(' ')[0] + '! Your enquiry is on its way — Nicole will be in touch shortly. 🐾';
+        ok.textContent = 'Thanks ' + name.split(' ')[0] + '! Your email is ready to go. Just hit send in your mail app and Nicole will be in touch soon.';
         ok.classList.add('show');
         ok.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
-      form.reset();
-      /* LAUNCH: wire this form to email/Formspree/Netlify Forms so enquiries
-         actually send. Currently a front-end mock only. */
+      window.location.href = mailto;
     });
   }
 })();
