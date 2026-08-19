@@ -34,6 +34,9 @@
 }
 
 *,*::before,*::after{ box-sizing:border-box; }
+/* let grid/flex children shrink below their content width on small screens */
+.container > *, .rev-grid > *, .head--row > *, .why__grid > *, .about .container > *, .book .container > *{ min-width:0; }
+h1,h2,h3{ overflow-wrap:break-word; }
 html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
 body{
   margin:0;
@@ -175,6 +178,7 @@ body.nav-open .nav-toggle span::after{ transform:translate(-50%,0) rotate(-45deg
 /* ---------- about ---------- */
 .about{ background:var(--cream-2); }
 .about .container{ display:grid; grid-template-columns:.92fr 1.08fr; gap:clamp(28px,5vw,72px); align-items:center; }
+.about__photo--main{ aspect-ratio:1/1; }
 .about__media{ position:relative; }
 .about__photo{
   aspect-ratio:4/5; border-radius:var(--r-lg); background:
@@ -367,6 +371,62 @@ body.nav-open .nav-toggle span::after{ transform:translate(-50%,0) rotate(-45deg
 /* click-to-text / phone emphasis */
 .btn--text{ background:var(--ink); color:#fff; box-shadow:0 8px 20px rgba(72,55,46,.28); }
 .btn--text:hover{ background:#5a4538; }
+
+/* ---------- v5: header logo, icons ---------- */
+.brand__logo{ height:58px; width:auto; display:block; }
+.masthead .container{ min-height:82px; }
+.brand{ gap:.75rem; }
+@media (max-width:720px){ .brand__logo{ height:48px; } .masthead .container{ min-height:74px; } body.nav-open .nav__links{ inset:74px 0 auto 0; } .brand__name{ font-size:1.05rem; } }
+.util__right a{ display:inline-flex; align-items:center; gap:.4em; }
+.util__right svg{ width:14px; height:14px; }
+
+/* hero badge: on mobile, sit it below the photo instead of overlapping */
+@media (max-width:900px){
+  .scene__badge{ position:static; margin:14px auto 0; width:max-content; max-width:100%; }
+  .scene__pill{ top:-12px; right:10px; }
+}
+
+/* ---------- about: bigger greeting + photo cluster ---------- */
+.about__hi{ font-size:clamp(2.4rem,4.6vw,3.4rem); margin-bottom:.9rem; }
+.about__photo--main{ aspect-ratio:4/5; }
+.about__thumbs{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px; }
+.about__thumbs img{ width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:var(--r-md); box-shadow:var(--shadow-sm); display:block; }
+
+/* ---------- reactive dogs callout ---------- */
+.callout{ background:var(--white); border:1px solid var(--line); border-left:5px solid var(--rose); border-radius:var(--r-md); padding:26px 28px; display:grid; grid-template-columns:auto 1fr; gap:1.2rem; align-items:start; box-shadow:var(--shadow-sm); }
+.callout h3{ font-size:1.3rem; margin-bottom:.35rem; }
+.callout p{ margin:0; color:var(--ink-soft); }
+@media (max-width:640px){ .callout{ grid-template-columns:1fr; } }
+
+/* ---------- deposit / booking info ---------- */
+.policy{ margin-top:1.4rem; background:var(--white); border:1px solid var(--line); border-radius:var(--r-md); padding:22px 26px; }
+.policy h3{ font-size:1.1rem; margin-bottom:.35rem; }
+.policy p{ margin:0; color:var(--ink-soft); font-size:.98rem; }
+.solo{ margin-top:.9rem; padding:.9rem 1.1rem; background:var(--blush-2); border-radius:12px; font-size:.95rem; color:var(--ink); }
+.solo b{ display:block; margin-bottom:.15rem; }
+
+/* ---------- gallery: expandable + lightbox ---------- */
+.gallery__grid figure.more{ display:none; }
+.gallery.expanded .gallery__grid figure.more{ display:block; }
+.gallery__grid figure{ cursor:zoom-in; }
+.gallery__actions{ text-align:center; margin-top:1.8rem; }
+.gallery.expanded .gallery__actions{ display:none; }
+.lightbox{ position:fixed; inset:0; background:rgba(40,28,24,.92); display:none; align-items:center; justify-content:center; z-index:1000; padding:20px; }
+.lightbox.open{ display:flex; }
+.lightbox img{ max-width:min(92vw,900px); max-height:88vh; border-radius:14px; box-shadow:0 30px 80px rgba(0,0,0,.5); }
+.lightbox__x{ position:absolute; top:16px; right:18px; width:44px; height:44px; border-radius:50%; border:0; background:rgba(255,255,255,.14); color:#fff; font-size:26px; line-height:1; cursor:pointer; }
+.lightbox__x:hover{ background:rgba(255,255,255,.28); }
+
+/* ---------- instagram band ---------- */
+.ig{ background:var(--white); border-block:1px solid var(--line); }
+.ig .container{ display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(1.5rem,5vw,4rem); align-items:center; }
+.ig h2{ font-size:clamp(1.8rem,3.4vw,2.5rem); }
+.ig p{ color:var(--ink-soft); margin-top:.6rem; }
+.ig__strip{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+.ig__strip img{ width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:12px; display:block; }
+.ig__handle{ display:inline-flex; align-items:center; gap:.5em; margin-top:1.2rem; }
+.ig__handle svg{ width:1.1em; height:1.1em; }
+@media (max-width:760px){ .ig .container{ grid-template-columns:1fr; } }
 
 /* ---------- responsive ---------- */
 @media (max-width:900px){

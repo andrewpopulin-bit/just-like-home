@@ -49,6 +49,30 @@
     });
   });
 
+  // --- gallery: "see more" expander ---
+  var moreBtn = document.getElementById('galleryMore');
+  if (moreBtn) {
+    moreBtn.addEventListener('click', function () {
+      var g = document.querySelector('.gallery');
+      if (g) g.classList.add('expanded');
+    });
+  }
+
+  // --- gallery lightbox (tap to enlarge) ---
+  var lb = document.getElementById('lightbox');
+  if (lb) {
+    var lbImg = lb.querySelector('img');
+    var close = function () { lb.classList.remove('open'); lbImg.src = ''; document.body.style.overflow = ''; };
+    document.querySelectorAll('.gallery__grid figure img').forEach(function (img) {
+      img.addEventListener('click', function () {
+        lbImg.src = img.src; lbImg.alt = img.alt || '';
+        lb.classList.add('open'); document.body.style.overflow = 'hidden';
+      });
+    });
+    lb.addEventListener('click', function (e) { if (e.target === lb || e.target.classList.contains('lightbox__x')) close(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+  }
+
   // --- booking form: opens the visitor's email pre-filled to Nicole ---
   // (Works with no backend. To switch to a hosted form later, point the
   //  <form> action at Formspree and remove this handler.)
