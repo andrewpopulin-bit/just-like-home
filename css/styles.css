@@ -372,8 +372,30 @@ body.nav-open .nav-toggle span::after{ transform:translate(-50%,0) rotate(-45deg
 .btn--text{ background:var(--ink); color:#fff; box-shadow:0 8px 20px rgba(72,55,46,.28); }
 .btn--text:hover{ background:#5a4538; }
 
+/* ---------- dachshund load animation (assembles tail > body > head, then paw prints) ---------- */
+.dachs{ height:78px; margin-bottom:1rem; overflow:visible; }
+.dachs__walk{ animation:dxwalk 2.4s cubic-bezier(.22,.9,.35,1) .2s both; width:max-content; }
+.dachs svg{ width:280px; height:auto; display:block; animation:dxbob 1.8s ease-in-out 3s infinite; }
+.dxp{ opacity:0; transform-box:fill-box; transform-origin:center; }
+.dx-tail{ animation:dxin .45s ease .5s forwards; }
+.dx-body{ animation:dxin .45s ease .9s forwards; }
+.dx-head{ animation:dxpop .55s cubic-bezier(.34,1.56,.64,1) 1.35s forwards; }
+.dx-pp{ opacity:0; transform-box:fill-box; transform-origin:center; }
+.dx-pp.a{ animation:dxpaw .35s ease 1.9s forwards; }
+.dx-pp.b{ animation:dxpaw .35s ease 2.1s forwards; }
+.dx-pp.c{ animation:dxpaw .35s ease 2.3s forwards; }
+.dx-pp.d{ animation:dxpaw .35s ease 2.5s forwards; }
+@keyframes dxwalk{ from{ transform:translateX(-64px); } to{ transform:none; } }
+@keyframes dxbob{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-3px); } }
+@keyframes dxin{ from{ opacity:0; transform:translateY(9px); } to{ opacity:1; transform:none; } }
+@keyframes dxpop{ 0%{ opacity:0; transform:scale(.6); } 70%{ opacity:1; transform:scale(1.1); } 100%{ opacity:1; transform:none; } }
+@keyframes dxpaw{ to{ opacity:.45; } }
+@media (max-width:720px){ .dachs{ height:64px; } .dachs svg{ width:225px; } }
+@media (prefers-reduced-motion:reduce){ .dxp{ opacity:1; } .dx-pp{ opacity:.45; } }
+
 /* ---------- v5: header logo, icons ---------- */
 .brand__logo{ height:58px; width:auto; display:block; }
+.masthead .nav > .btn{ padding:.6em 1.15em; font-size:.88rem; box-shadow:0 4px 12px rgba(193,112,106,.22); }
 .masthead .container{ min-height:82px; }
 .brand{ gap:.75rem; }
 @media (max-width:720px){ .brand__logo{ height:48px; } .masthead .container{ min-height:74px; } body.nav-open .nav__links{ inset:74px 0 auto 0; } .brand__name{ font-size:1.05rem; } }
