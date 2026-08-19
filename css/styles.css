@@ -372,26 +372,59 @@ body.nav-open .nav-toggle span::after{ transform:translate(-50%,0) rotate(-45deg
 .btn--text{ background:var(--ink); color:#fff; box-shadow:0 8px 20px rgba(72,55,46,.28); }
 .btn--text:hover{ background:#5a4538; }
 
-/* ---------- dachshund load animation (assembles tail > body > head, then paw prints) ---------- */
-.dachs{ height:78px; margin-bottom:1rem; overflow:visible; }
-.dachs__walk{ animation:dxwalk 2.4s cubic-bezier(.22,.9,.35,1) .2s both; width:max-content; }
-.dachs svg{ width:280px; height:auto; display:block; animation:dxbob 1.8s ease-in-out 3s infinite; }
-.dxp{ opacity:0; transform-box:fill-box; transform-origin:center; }
-.dx-tail{ animation:dxin .45s ease .5s forwards; }
-.dx-body{ animation:dxin .45s ease .9s forwards; }
-.dx-head{ animation:dxpop .55s cubic-bezier(.34,1.56,.64,1) 1.35s forwards; }
-.dx-pp{ opacity:0; transform-box:fill-box; transform-origin:center; }
-.dx-pp.a{ animation:dxpaw .35s ease 1.9s forwards; }
-.dx-pp.b{ animation:dxpaw .35s ease 2.1s forwards; }
-.dx-pp.c{ animation:dxpaw .35s ease 2.3s forwards; }
-.dx-pp.d{ animation:dxpaw .35s ease 2.5s forwards; }
-@keyframes dxwalk{ from{ transform:translateX(-64px); } to{ transform:none; } }
-@keyframes dxbob{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-3px); } }
-@keyframes dxin{ from{ opacity:0; transform:translateY(9px); } to{ opacity:1; transform:none; } }
-@keyframes dxpop{ 0%{ opacity:0; transform:scale(.6); } 70%{ opacity:1; transform:scale(1.1); } 100%{ opacity:1; transform:none; } }
-@keyframes dxpaw{ to{ opacity:.45; } }
-@media (max-width:720px){ .dachs{ height:64px; } .dachs svg{ width:225px; } }
-@media (prefers-reduced-motion:reduce){ .dxp{ opacity:1; } .dx-pp{ opacity:.45; } }
+/* ==========================================================================
+   Dachshund showpiece (Nicole's Canva mascot)
+   Sequence: three slices of the artwork fly in and snap together
+   (tail > middle > head), the dog trots forward stamping paw prints,
+   then settles into a gentle idle bob.
+   ========================================================================== */
+.dxs{ position:relative; height:158px; margin-bottom:.4rem; width:min(100%,430px); }
+.dxs__walker{ position:absolute; left:0; bottom:14px; width:220px; height:144px;
+  animation:dxtravel 2.3s cubic-bezier(.5,.05,.35,1) 2s both; }
+.dxs__gait{ width:100%; height:100%; animation:dxgait 2.3s linear 2s both; }
+.dxs__dog{ position:relative; width:100%; height:100%;
+  animation:dxsnap .4s ease 1.62s both, dxidle 2.8s ease-in-out 4.6s infinite; }
+.dxs .sl{ position:absolute; inset:0; background:url("../assets/brand/dachshund.png") no-repeat center/100% 100%; }
+.sl-tail{ clip-path:inset(0 63% 0 0);  animation:dxtail .75s cubic-bezier(.3,1.45,.45,1) .35s both; }
+.sl-mid{  clip-path:inset(0 30% 0 35%); animation:dxmid  .75s cubic-bezier(.3,1.45,.45,1) .75s both; }
+.sl-head{ clip-path:inset(0 0 0 68%);  animation:dxhead .75s cubic-bezier(.3,1.45,.45,1) 1.15s both; }
+@keyframes dxtail{ from{ opacity:0; transform:translate(-90px,14px) rotate(-11deg); } to{ opacity:1; transform:none; } }
+@keyframes dxmid{  from{ opacity:0; transform:translateY(-84px) scale(.92); }        to{ opacity:1; transform:none; } }
+@keyframes dxhead{ from{ opacity:0; transform:translate(90px,-12px) rotate(10deg); } to{ opacity:1; transform:none; } }
+@keyframes dxsnap{ 0%,100%{ transform:scale(1); } 45%{ transform:scaleX(1.05) scaleY(.94); } }
+@keyframes dxtravel{ from{ transform:translateX(0); } to{ transform:translateX(150px); } }
+/* trot: rock + step bounce combined so nothing fights over transform */
+@keyframes dxgait{
+  0%{ transform:rotate(0) translateY(0); }
+  10%{ transform:rotate(-2.5deg) translateY(-5px); }
+  22%{ transform:rotate(0) translateY(0); }
+  35%{ transform:rotate(2.5deg) translateY(-5px); }
+  47%{ transform:rotate(0) translateY(0); }
+  60%{ transform:rotate(-2.5deg) translateY(-5px); }
+  72%{ transform:rotate(0) translateY(0); }
+  85%{ transform:rotate(2deg) translateY(-4px); }
+  100%{ transform:rotate(0) translateY(0); }
+}
+@keyframes dxidle{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-3px); } }
+/* paw prints stamped along the path */
+.dxs .pp{ position:absolute; bottom:2px; width:20px; height:20px; opacity:0; }
+.dxs .pp svg{ width:100%; height:100%; display:block; }
+.pp.p1{ left:16px;  bottom:6px;  animation:dxpp .4s ease 2.25s forwards; }
+.pp.p2{ left:58px;  bottom:18px; animation:dxpp .4s ease 2.65s forwards; }
+.pp.p3{ left:100px; bottom:6px;  animation:dxpp .4s ease 3.05s forwards; }
+.pp.p4{ left:142px; bottom:18px; animation:dxpp .4s ease 3.45s forwards; }
+.pp.p5{ left:184px; bottom:6px;  animation:dxpp .4s ease 3.85s forwards; }
+@keyframes dxpp{ from{ opacity:0; transform:scale(.5); } to{ opacity:.5; transform:scale(1); } }
+@media (max-width:720px){
+  .dxs{ height:120px; }
+  .dxs__walker{ width:168px; height:110px; bottom:10px; }
+  @keyframes dxtravel{ from{ transform:translateX(0); } to{ transform:translateX(100px); } }
+}
+@media (prefers-reduced-motion:reduce){
+  .dxs .sl{ opacity:1; transform:none; }
+  .dxs .pp{ opacity:.5; }
+  .dxs__walker{ transform:translateX(150px); }
+}
 
 /* ---------- v5: header logo, icons ---------- */
 .brand__logo{ height:58px; width:auto; display:block; }
@@ -439,6 +472,14 @@ body.nav-open .nav-toggle span::after{ transform:translate(-50%,0) rotate(-45deg
 .lightbox__x{ position:absolute; top:16px; right:18px; width:44px; height:44px; border-radius:50%; border:0; background:rgba(255,255,255,.14); color:#fff; font-size:26px; line-height:1; cursor:pointer; }
 .lightbox__x:hover{ background:rgba(255,255,255,.28); }
 
+/* ---------- availability calendar ---------- */
+.avail{ background:var(--white); border-block:1px solid var(--line); }
+.calwrap{ border:1px solid var(--line); border-radius:var(--r-md); overflow:hidden; box-shadow:var(--shadow-sm); background:#fff; }
+.calwrap iframe{ display:block; width:100%; height:520px; border:0; }
+.avail__note{ display:flex; gap:.6rem; align-items:flex-start; margin-top:1rem; color:var(--ink-soft); font-size:.92rem; }
+.avail__note svg{ width:1.2em; height:1.2em; flex:none; color:var(--rose-deep); margin-top:.15em; }
+@media (max-width:720px){ .calwrap iframe{ height:420px; } }
+
 /* ---------- instagram band ---------- */
 .ig{ background:var(--white); border-block:1px solid var(--line); }
 .ig .container{ display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(1.5rem,5vw,4rem); align-items:center; }
@@ -453,17 +494,21 @@ body.nav-open .nav-toggle span::after{ transform:translate(-50%,0) rotate(-45deg
 /* ---------- responsive ---------- */
 @media (max-width:900px){
   .hero .container, .about .container, .why__grid, .book .container{ grid-template-columns:1fr; }
-  .scene{ order:-1; max-width:440px; margin-inline:auto; }
+  .scene{ max-width:440px; margin-inline:auto; width:100%; }
   .about__media{ max-width:380px; }
   .svc-grid, .rev-grid, .steps{ grid-template-columns:1fr; }
   .step__arrow{ display:none !important; }
   .foot__top{ grid-template-columns:1fr 1fr; }
   .foot__brand{ grid-column:1 / -1; }
 }
+.nav__mobile-cta{ display:none; }
 @media (max-width:720px){
   .nav__links, .util{ display:none; }
+  .masthead .nav > .btn{ display:none; }   /* CTA moves into the menu on mobile */
   .nav-toggle{ display:block; }
   .nav{ gap:.6rem; }
+  body.nav-open .nav__mobile-cta{ display:block; border-bottom:0 !important; padding-top:.9rem; }
+  body.nav-open .nav__mobile-cta a{ display:inline-flex !important; }
   body.nav-open .nav__links{
     display:flex; position:fixed; inset:74px 0 auto 0; flex-direction:column; gap:0;
     background:var(--cream); border-bottom:1px solid var(--line); padding:1rem var(--pad) 1.4rem; box-shadow:var(--shadow-md);

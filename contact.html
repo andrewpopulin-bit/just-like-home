@@ -35,8 +35,9 @@
           <li><a href="index.html#areas">Areas</a></li>
           <li><a href="index.html#gallery">Gallery</a></li>
           <li><a href="contact.html#faq" aria-current="page">FAQ</a></li>
+          <li class="nav__mobile-cta"><a class="btn" href="#enquire">Make an Enquiry</a></li>
         </ul>
-        <a class="btn" href="#enquire">Send an enquiry</a>
+        <a class="btn" href="#enquire">Make an Enquiry</a>
         <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span></button>
       </nav>
     </div>
@@ -124,6 +125,30 @@
         </button>
         <p class="form__note">Prefer to text? <a href="sms:0452528894" style="color:var(--rose-deep);font-weight:600">Message 0452 528 894</a>. Your details are only used to reply to your enquiry.</p>
       </form>
+    </div>
+  </section>
+
+  <!-- ===== Availability calendar =====
+       DEMO EMBED: currently showing the public Australian Holidays calendar
+       as placeholder data. To go live: Nicole creates a "Just Like Home
+       Bookings" Google Calendar (jlh.petservice@gmail.com), adds every
+       booking as an event, sets the calendar public (free/busy only so
+       client details stay private), then swap the src below for her
+       calendar's embed URL. -->
+  <section class="section avail" id="availability">
+    <div class="container">
+      <div class="head head--row reveal">
+        <span class="eyebrow">Availability</span>
+        <h2>Check my calendar</h2>
+        <p>Booked-out dates show below. If your dates look free, or even if they don't, send an enquiry and I'll confirm.</p>
+      </div>
+      <div class="calwrap reveal">
+        <iframe src="https://calendar.google.com/calendar/embed?src=en.australian%23holiday%40group.v.calendar.google.com&ctz=Australia%2FSydney&mode=MONTH&showTitle=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0&wkst=2&color=%23BE726B" title="Just Like Home availability calendar" loading="lazy"></iframe>
+      </div>
+      <p class="avail__note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.5"/></svg>
+        Availability is a guide only and can change quickly. Your booking is confirmed once we've been in touch and your deposit is paid.
+      </p>
     </div>
   </section>
 
