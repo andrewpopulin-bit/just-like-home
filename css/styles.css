@@ -112,7 +112,7 @@ body.nav-open .nav-toggle span::before{ transform:translate(-50%,0) rotate(45deg
 body.nav-open .nav-toggle span::after{ transform:translate(-50%,0) rotate(-45deg); }
 
 /* ---------- HERO ---------- */
-.hero{ position:relative; overflow:hidden; padding-top:clamp(40px,6vw,72px); padding-bottom:clamp(50px,7vw,90px); }
+.hero{ position:relative; overflow:hidden; padding-top:clamp(10px,2vw,24px); padding-bottom:clamp(50px,7vw,90px); }
 .hero__bg{ position:absolute; inset:0; z-index:0; pointer-events:none; }
 .hero__blob{ position:absolute; border-radius:50%; filter:blur(6px); opacity:.55; }
 .hero__blob.b1{ width:520px; height:520px; background:radial-gradient(circle at 30% 30%, var(--blush), transparent 70%); top:-160px; right:-120px; }
@@ -373,57 +373,42 @@ body.nav-open .nav-toggle span::after{ transform:translate(-50%,0) rotate(-45deg
 .btn--text:hover{ background:#5a4538; }
 
 /* ==========================================================================
-   Dachshund showpiece (Nicole's Canva mascot)
-   Sequence: three slices of the artwork fly in and snap together
-   (tail > middle > head), the dog trots forward stamping paw prints,
-   then settles into a gentle idle bob.
+   Dachshund walk-across (Nicole's Canva mascot)
+   He trots the full width of the screen once on load, paw prints
+   stamping behind him and staying as a trail.
    ========================================================================== */
-.dxs{ position:relative; height:158px; margin-bottom:.4rem; width:min(100%,430px); }
-.dxs__walker{ position:absolute; left:0; bottom:14px; width:220px; height:144px;
-  animation:dxtravel 2.3s cubic-bezier(.5,.05,.35,1) 2s both; }
-.dxs__gait{ width:100%; height:100%; animation:dxgait 2.3s linear 2s both; }
-.dxs__dog{ position:relative; width:100%; height:100%;
-  animation:dxsnap .4s ease 1.62s both, dxidle 2.8s ease-in-out 4.6s infinite; }
-.dxs .sl{ position:absolute; inset:0; background:url("../assets/brand/dachshund.png") no-repeat center/100% 100%; }
-.sl-tail{ clip-path:inset(0 63% 0 0);  animation:dxtail .75s cubic-bezier(.3,1.45,.45,1) .35s both; }
-.sl-mid{  clip-path:inset(0 30% 0 35%); animation:dxmid  .75s cubic-bezier(.3,1.45,.45,1) .75s both; }
-.sl-head{ clip-path:inset(0 0 0 68%);  animation:dxhead .75s cubic-bezier(.3,1.45,.45,1) 1.15s both; }
-@keyframes dxtail{ from{ opacity:0; transform:translate(-90px,14px) rotate(-11deg); } to{ opacity:1; transform:none; } }
-@keyframes dxmid{  from{ opacity:0; transform:translateY(-84px) scale(.92); }        to{ opacity:1; transform:none; } }
-@keyframes dxhead{ from{ opacity:0; transform:translate(90px,-12px) rotate(10deg); } to{ opacity:1; transform:none; } }
-@keyframes dxsnap{ 0%,100%{ transform:scale(1); } 45%{ transform:scaleX(1.05) scaleY(.94); } }
-@keyframes dxtravel{ from{ transform:translateX(0); } to{ transform:translateX(150px); } }
+.dxrun{ position:relative; height:clamp(96px,13vw,150px); margin-top:6px; pointer-events:none; }
+.dxrun__walker{ position:absolute; bottom:6px; left:0; width:clamp(150px,17vw,210px); aspect-ratio:406/265;
+  transform:translateX(-260px); animation:dxrun 9s linear .5s forwards; }
+.dxrun__gait{ width:100%; height:100%; animation:dxgait .6s linear .5s 15; }
+.dxrun__dog{ width:100%; height:100%; background:url("../assets/brand/dachshund.png") no-repeat center/contain; }
+@keyframes dxrun{ from{ transform:translateX(-260px); } to{ transform:translateX(calc(100vw + 80px)); } }
 /* trot: rock + step bounce combined so nothing fights over transform */
 @keyframes dxgait{
   0%{ transform:rotate(0) translateY(0); }
-  10%{ transform:rotate(-2.5deg) translateY(-5px); }
-  22%{ transform:rotate(0) translateY(0); }
-  35%{ transform:rotate(2.5deg) translateY(-5px); }
-  47%{ transform:rotate(0) translateY(0); }
-  60%{ transform:rotate(-2.5deg) translateY(-5px); }
-  72%{ transform:rotate(0) translateY(0); }
-  85%{ transform:rotate(2deg) translateY(-4px); }
+  25%{ transform:rotate(-2.4deg) translateY(-4px); }
+  50%{ transform:rotate(0) translateY(0); }
+  75%{ transform:rotate(2.4deg) translateY(-4px); }
   100%{ transform:rotate(0) translateY(0); }
 }
-@keyframes dxidle{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-3px); } }
-/* paw prints stamped along the path */
-.dxs .pp{ position:absolute; bottom:2px; width:20px; height:20px; opacity:0; }
-.dxs .pp svg{ width:100%; height:100%; display:block; }
-.pp.p1{ left:16px;  bottom:6px;  animation:dxpp .4s ease 2.25s forwards; }
-.pp.p2{ left:58px;  bottom:18px; animation:dxpp .4s ease 2.65s forwards; }
-.pp.p3{ left:100px; bottom:6px;  animation:dxpp .4s ease 3.05s forwards; }
-.pp.p4{ left:142px; bottom:18px; animation:dxpp .4s ease 3.45s forwards; }
-.pp.p5{ left:184px; bottom:6px;  animation:dxpp .4s ease 3.85s forwards; }
-@keyframes dxpp{ from{ opacity:0; transform:scale(.5); } to{ opacity:.5; transform:scale(1); } }
-@media (max-width:720px){
-  .dxs{ height:120px; }
-  .dxs__walker{ width:168px; height:110px; bottom:10px; }
-  @keyframes dxtravel{ from{ transform:translateX(0); } to{ transform:translateX(100px); } }
-}
+/* paw prints stamped along the way, staying as a trail */
+.dxrun .pp{ position:absolute; width:17px; height:17px; opacity:0; }
+.dxrun .pp svg{ width:100%; height:100%; display:block; }
+.pp.q01{ left:3%;  bottom:10px; animation:dxpp .35s ease 1.6s forwards; }
+.pp.q02{ left:12%; bottom:26px; animation:dxpp .35s ease 2.4s forwards; }
+.pp.q03{ left:21%; bottom:10px; animation:dxpp .35s ease 3.2s forwards; }
+.pp.q04{ left:30%; bottom:26px; animation:dxpp .35s ease 3.9s forwards; }
+.pp.q05{ left:40%; bottom:10px; animation:dxpp .35s ease 4.7s forwards; }
+.pp.q06{ left:49%; bottom:26px; animation:dxpp .35s ease 5.4s forwards; }
+.pp.q07{ left:58%; bottom:10px; animation:dxpp .35s ease 6.1s forwards; }
+.pp.q08{ left:68%; bottom:26px; animation:dxpp .35s ease 6.9s forwards; }
+.pp.q09{ left:77%; bottom:10px; animation:dxpp .35s ease 7.6s forwards; }
+.pp.q10{ left:86%; bottom:26px; animation:dxpp .35s ease 8.4s forwards; }
+.pp.q11{ left:94%; bottom:10px; animation:dxpp .35s ease 9.1s forwards; }
+@keyframes dxpp{ from{ opacity:0; transform:scale(.5); } to{ opacity:.45; transform:scale(1); } }
 @media (prefers-reduced-motion:reduce){
-  .dxs .sl{ opacity:1; transform:none; }
-  .dxs .pp{ opacity:.5; }
-  .dxs__walker{ transform:translateX(150px); }
+  .dxrun__walker{ transform:translateX(4vw); animation:none; }
+  .dxrun .pp{ opacity:.45; }
 }
 
 /* ---------- v5: header logo, icons ---------- */
