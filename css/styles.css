@@ -511,3 +511,28 @@ a.chip--muted:hover{ border-style:solid; }
   *{ animation:none !important; transition:none !important; scroll-behavior:auto; }
   .reveal{ opacity:1; transform:none; }
 }
+
+/* ---------- handover guide page ---------- */
+.guide{ max-width:820px; margin-inline:auto; }
+.guide h2{ font-size:clamp(1.6rem,3.2vw,2.2rem); margin-top:2.6rem; }
+.guide h3{ font-size:1.15rem; margin-top:1.6rem; }
+.guide p, .guide li{ color:var(--ink-soft); }
+.guide ol, .guide ul{ padding-left:1.3rem; }
+.guide li{ margin-bottom:.55rem; }
+.guide strong{ color:var(--ink); }
+.gcard{ background:var(--white); border:1px solid var(--line); border-radius:var(--r-md); padding:24px 26px; margin:1.4rem 0; box-shadow:var(--shadow-sm); }
+.gcard--warn{ border-left:5px solid var(--rose); background:linear-gradient(120deg,var(--blush-2),#fff); }
+.gcard--do{ border-left:5px solid #7bbf8f; }
+.gcard h3{ margin-top:0; }
+.gcard p:last-child, .gcard ul:last-child, .gcard ol:last-child{ margin-bottom:0; }
+.gsteps{ counter-reset:g; list-style:none; padding-left:0; }
+.gsteps li{ position:relative; padding-left:2.6rem; margin-bottom:1rem; }
+.gsteps li::before{ counter-increment:g; content:counter(g); position:absolute; left:0; top:-2px;
+  width:1.85rem; height:1.85rem; border-radius:50%; background:var(--blush); color:var(--rose-deep);
+  font-weight:700; font-size:.9rem; display:grid; place-items:center; }
+.gtoc{ display:grid; gap:.5rem; margin:1.6rem 0 0; }
+.gtoc a{ display:flex; gap:.7rem; align-items:center; padding:.8rem 1rem; background:var(--white);
+  border:1px solid var(--line); border-radius:14px; font-weight:600; color:var(--ink); transition:.2s; }
+.gtoc a:hover{ border-color:var(--rose); transform:translateX(3px); }
+.gtoc span{ color:var(--rose-deep); font-weight:700; }
+code{ background:var(--cream-2); padding:.15em .45em; border-radius:6px; font-size:.9em; word-break:break-all; }
