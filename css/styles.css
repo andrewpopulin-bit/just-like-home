@@ -536,3 +536,9 @@ a.chip--muted:hover{ border-style:solid; }
 .gtoc a:hover{ border-color:var(--rose); transform:translateX(3px); }
 .gtoc span{ color:var(--rose-deep); font-weight:700; }
 code{ background:var(--cream-2); padding:.15em .45em; border-radius:6px; font-size:.9em; word-break:break-all; }
+
+/* ---------- Google review button ---------- */
+.btn--google{ background:var(--white); color:var(--ink); border-color:var(--line); box-shadow:var(--shadow-sm); }
+.btn--google:hover{ border-color:var(--rose); box-shadow:var(--shadow-md); }
+.btn--google svg{ width:1.15em; height:1.15em; }
+.rev-actions{ display:flex; gap:.8rem; justify-content:center; align-items:center; flex-wrap:wrap; margin-top:2.2rem; }
