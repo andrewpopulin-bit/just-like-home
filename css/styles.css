@@ -542,3 +542,33 @@ code{ background:var(--cream-2); padding:.15em .45em; border-radius:6px; font-si
 .btn--google:hover{ border-color:var(--rose); box-shadow:var(--shadow-md); }
 .btn--google svg{ width:1.15em; height:1.15em; }
 .rev-actions{ display:flex; gap:.8rem; justify-content:center; align-items:center; flex-wrap:wrap; margin-top:2.2rem; }
+
+/* ---------- availability calendar (hotel style) ---------- */
+.avc{ background:var(--white); border:1px solid var(--line); border-radius:var(--r-md); padding:clamp(18px,3vw,30px); box-shadow:var(--shadow-sm); }
+.avc__top{ display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; margin-bottom:1.4rem; }
+.avc__legend{ display:flex; gap:1.1rem; flex-wrap:wrap; font-size:.86rem; color:var(--ink-soft); }
+.avc__legend span{ display:inline-flex; align-items:center; gap:.45em; }
+.avc__key{ width:14px; height:14px; border-radius:5px; flex:none; }
+.avc__key.free{ background:#E4F0E7; border:1px solid #9CC9A8; }
+.avc__key.limited{ background:#FBEBD6; border:1px solid #E0B274; }
+.avc__key.full{ background:var(--blush); border:1px solid var(--rose); }
+.avc__nav{ display:flex; gap:.5rem; }
+.avc__nav button{ width:40px; height:40px; border-radius:12px; border:1px solid var(--line); background:var(--white);
+  color:var(--ink); font-size:1.1rem; cursor:pointer; transition:.2s; line-height:1; }
+.avc__nav button:hover:not(:disabled){ border-color:var(--rose); color:var(--rose-deep); }
+.avc__nav button:disabled{ opacity:.35; cursor:default; }
+.avc__months{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(1rem,2.5vw,2rem); }
+.avc__mname{ font-weight:700; color:var(--ink); margin-bottom:.7rem; font-size:1rem; }
+.avc__grid{ display:grid; grid-template-columns:repeat(7,1fr); gap:4px; }
+.avc__dow{ font-size:.66rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+  color:var(--clay); text-align:center; padding-bottom:.3rem; }
+.avc__pad{ aspect-ratio:1; }
+.avc__day{ aspect-ratio:1; display:grid; place-items:center; border-radius:8px; font-size:.82rem;
+  font-weight:600; color:var(--ink); background:#E4F0E7; border:1px solid #9CC9A8; }
+.avc__day.is-limited{ background:#FBEBD6; border-color:#E0B274; }
+.avc__day.is-full{ background:var(--blush); border-color:var(--rose); color:var(--rose-deep); text-decoration:line-through; }
+.avc__day.is-past{ background:transparent; border-color:transparent; color:#CDBDB4; font-weight:400; }
+.avc__note{ margin-top:1.3rem; font-size:.9rem; color:var(--ink-soft); display:flex; gap:.6rem; align-items:flex-start; }
+.avc__note svg{ width:1.15em; height:1.15em; color:var(--rose-deep); flex:none; margin-top:.15em; }
+@media (max-width:900px){ .avc__months{ grid-template-columns:1fr 1fr; } }
+@media (max-width:620px){ .avc__months{ grid-template-columns:1fr; } .avc__day{ font-size:.9rem; } }

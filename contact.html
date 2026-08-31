@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Make an Enquiry | Just Like Home by Nicole</title>
   <meta name="description" content="Make an enquiry with Just Like Home by Nicole, or text 0452 528 894. Boutique dog sitting and walks across Sydney's Eastern Suburbs. Maximum 3 dogs per stay.">
-  <link rel="stylesheet" href="css/styles.css?v=9">
+  <link rel="stylesheet" href="css/styles.css?v=10">
   <script>document.documentElement.className += ' js';</script>
 </head>
 <body>
@@ -129,27 +129,43 @@
     </div>
   </section>
 
-  <!-- ===== Availability calendar =====
-       DEMO EMBED: currently showing the public Australian Holidays calendar
-       as placeholder data. To go live: Nicole creates a "Just Like Home
-       Bookings" Google Calendar (jlh.petservice@gmail.com), adds every
-       booking as an event, sets the calendar public (free/busy only so
-       client details stay private), then swap the src below for her
-       calendar's embed URL. -->
+  <!-- ===== Availability =====
+       Hotel style: each date shows Available / Limited / Fully booked.
+       Edit the dates at the top of js/availability.js - nothing else. -->
   <section class="section avail" id="availability">
     <div class="container">
       <div class="head head--row reveal">
         <span class="eyebrow">Availability</span>
-        <h2>Check my calendar</h2>
-        <p>Booked-out dates show below. If your dates look free, or even if they don't, send an enquiry and I'll confirm.</p>
+        <h2>When I'm free</h2>
+        <p>A guide to my next few months. If your dates look free, send an enquiry and I'll confirm.</p>
       </div>
-      <div class="calwrap reveal">
-        <iframe src="https://calendar.google.com/calendar/embed?src=en.australian%23holiday%40group.v.calendar.google.com&ctz=Australia%2FSydney&mode=MONTH&showTitle=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0&wkst=2&color=%23BE726B" title="Just Like Home availability calendar" loading="lazy"></iframe>
+
+      <div class="avc reveal">
+        <div class="avc__top">
+          <div class="avc__legend">
+            <span><i class="avc__key free"></i> Available</span>
+            <span><i class="avc__key limited"></i> Limited spaces</span>
+            <span><i class="avc__key full"></i> Fully booked</span>
+          </div>
+          <div class="avc__nav">
+            <button type="button" id="avcPrev" aria-label="Previous months">&#8249;</button>
+            <button type="button" id="avcNext" aria-label="Next months">&#8250;</button>
+          </div>
+        </div>
+
+        <div class="avc__months" id="availabilityCal"></div>
+
+        <p class="avc__note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.5"/></svg>
+          I only take a maximum of 3 dogs at a time, so spaces go quickly. This is a guide only and can change fast. Even if your dates look booked it's worth asking, I can often help or point you to someone who can.
+        </p>
       </div>
-      <p class="avail__note">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.5"/></svg>
-        Availability is a guide only and can change quickly. Your booking is confirmed once we've been in touch and your deposit is paid.
-      </p>
+
+      <div style="text-align:center;margin-top:2rem">
+        <a class="btn" href="#enquire">Make an Enquiry
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -247,6 +263,7 @@
     </div>
   </footer>
 
+  <script src="js/availability.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
