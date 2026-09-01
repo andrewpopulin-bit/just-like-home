@@ -120,6 +120,7 @@ window.JLH_SHEET_EDIT = "https://docs.google.com/spreadsheets/d/13glVW-BH9I9apWb
 
   window.JLH = window.JLH || {};
   window.JLH.parseCSVBookings = bookingsFromCSV;
+  window.JLH.parseCSVRows = parseCSV;
 
   window.JLH.renderCalendar = function (rootEl, cfg, offset) {
     var m = build(cfg), today = midnight(new Date());
