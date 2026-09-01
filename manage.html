@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Manage availability | Just Like Home by Nicole</title>
+  <link rel="stylesheet" href="css/styles.css?v=12">
+  <script>document.documentElement.className += ' js';</script>
+</head>
+<body>
+
+  <header class="masthead">
+    <div class="container">
+      <a class="brand" href="index.html" aria-label="Just Like Home by Nicole, home">
+        <img class="brand__logo" src="assets/brand/logo.png" alt="" width="375" height="291">
+        <span class="brand__text"><span class="brand__name">Just Like Home</span><span class="brand__sub">by Nicole</span></span>
+      </a>
+      <nav class="nav"><a class="btn btn--ghost" href="guide.html">Your guide</a></nav>
+    </div>
+  </header>
+
+  <section class="pagehero">
+    <div class="container">
+      <span class="eyebrow center">For Nicole only</span>
+      <h1>Manage your availability</h1>
+      <p>Add your booked dates below, then follow the two steps at the bottom to put them live.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:clamp(30px,4vw,50px)">
+    <div class="container guide">
+
+      <div class="gcard">
+        <h3 style="margin-top:0">How many dogs can you take at once?</h3>
+        <p style="margin-bottom:.8rem">This sets what counts as "fully booked".</p>
+        <input type="number" id="maxSpaces" min="1" max="10" value="3"
+               style="width:90px;font-size:1.1rem;padding:.55em .7em;border:1.5px solid var(--line);border-radius:12px;background:var(--cream);font-family:inherit;color:inherit">
+      </div>
+
+      <h2 style="margin-top:2.2rem">Your booked dates</h2>
+      <p>Add a row for each booking or period you are away. Leave the rest alone and those days show as available.</p>
+
+      <div id="rows"></div>
+
+      <button class="btn btn--ghost" type="button" id="addRow" style="margin-top:1rem">+ Add dates</button>
+
+      <h2 style="margin-top:2.6rem">Preview</h2>
+      <p>This is exactly how your Availability page will look.</p>
+      <div class="avc">
+        <div class="avc__top">
+          <div class="avc__legend">
+            <span><i class="avc__key free"></i> Available</span>
+            <span><i class="avc__key limited"></i> Limited spaces</span>
+            <span><i class="avc__key full"></i> Fully booked</span>
+          </div>
+        </div>
+        <div class="avc__months" id="previewCal"></div>
+      </div>
+
+      <h2 style="margin-top:2.6rem">Putting it live</h2>
+      <div class="gcard gcard--warn">
+        <p><strong>Two steps, about 30 seconds.</strong></p>
+        <ol class="gsteps" style="margin-bottom:0">
+          <li>Click <strong>Copy my dates</strong> below.</li>
+          <li>Click <strong>Open the file on GitHub</strong>, select everything in the box, paste over it, then scroll down and click the green <strong>Commit changes</strong> button. Your website updates within a minute or two.</li>
+        </ol>
+      </div>
+
+      <div style="display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.4rem">
+        <button class="btn" type="button" id="copyBtn">Copy my dates</button>
+        <a class="btn btn--ghost" id="ghLink" target="_blank" rel="noopener"
+           href="https://github.com/andrewpopulin-bit/just-like-home/edit/main/data/availability.json">Open the file on GitHub</a>
+      </div>
+      <p id="copied" style="color:#2F6B41;font-weight:600;margin-top:.9rem;display:none">Copied. Now open the file on GitHub and paste over everything in the box.</p>
+
+      <details style="margin-top:1.6rem">
+        <summary style="cursor:pointer;font-weight:600">Show me what gets copied</summary>
+        <pre id="out" style="background:var(--cream-2);padding:1rem;border-radius:12px;overflow-x:auto;font-size:.85rem;margin-top:.8rem"></pre>
+      </details>
+
+      <p style="margin-top:2rem"><strong>Stuck?</strong> Message me and I will do it for you, genuinely no bother.</p>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="container">
+      <div class="foot__bottom" style="border-top:0;padding-top:0">
+        <span>Just Like Home by Nicole</span>
+        <span>Built by <a href="https://elsio.com.au" target="_blank" rel="noopener" style="color:var(--blush)">Elsio</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/availability.js"></script>
+  <script src="js/manage.js"></script>
+</body>
+</html>

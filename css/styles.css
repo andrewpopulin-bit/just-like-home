@@ -572,3 +572,25 @@ code{ background:var(--cream-2); padding:.15em .45em; border-radius:6px; font-si
 .avc__note svg{ width:1.15em; height:1.15em; color:var(--rose-deep); flex:none; margin-top:.15em; }
 @media (max-width:900px){ .avc__months{ grid-template-columns:1fr 1fr; } }
 @media (max-width:620px){ .avc__months{ grid-template-columns:1fr; } .avc__day{ font-size:.9rem; } }
+
+/* ---------- live date availability note on the enquiry form ---------- */
+.datestatus{ margin:-4px 0 16px; padding:0; font-size:.92rem; line-height:1.5; }
+.datestatus:empty{ display:none; }
+.datestatus{ border-radius:12px; padding:.7em .95em; border:1px solid transparent; }
+.datestatus.is-free{ background:#E8F3EB; border-color:#9CC9A8; color:#2F6B41; }
+.datestatus.is-limited{ background:#FBEBD6; border-color:#E0B274; color:#8A5A16; }
+.datestatus.is-full{ background:var(--blush-2); border-color:var(--rose); color:var(--rose-deep); }
+.datestatus.is-note{ background:var(--cream-2); border-color:var(--line); color:var(--ink-soft); }
+
+/* ---------- manage availability page ---------- */
+.mrow{ display:grid; grid-template-columns:1fr 1fr 1fr auto; gap:.8rem; align-items:end;
+  background:var(--white); border:1px solid var(--line); border-radius:var(--r-md); padding:16px 18px; margin-bottom:.8rem; }
+.mrow label{ display:flex; flex-direction:column; gap:.3rem; font-size:.78rem; font-weight:700;
+  letter-spacing:.04em; text-transform:uppercase; color:var(--clay); }
+.mrow input, .mrow select{ font-family:inherit; font-size:1rem; color:var(--ink); background:var(--cream);
+  border:1.5px solid var(--line); border-radius:12px; padding:.6em .7em; }
+.mrow input:focus, .mrow select:focus{ outline:none; border-color:var(--rose); background:#fff; }
+.mdel{ background:transparent; border:1.5px solid var(--line); color:var(--ink-soft); border-radius:12px;
+  padding:.7em 1em; cursor:pointer; font-family:inherit; font-size:.9rem; font-weight:600; }
+.mdel:hover{ border-color:var(--rose); color:var(--rose-deep); }
+@media (max-width:720px){ .mrow{ grid-template-columns:1fr 1fr; } .mdel{ grid-column:1 / -1; } }

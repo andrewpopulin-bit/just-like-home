@@ -1,0 +1,8 @@
+{
+  "maxSpaces": 3,
+  "monthsToShow": 3,
+  "bookings": [
+    { "from": "2026-09-01", "to": "2026-09-26", "spaces": 0 },
+    { "from": "2026-10-10", "to": "2026-10-13", "spaces": 1 }
+  ]
+}
