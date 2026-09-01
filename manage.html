@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
-  <title>Manage availability | Just Like Home by Nicole</title>
-  <link rel="stylesheet" href="css/styles.css?v=12">
+  <title>My availability | Just Like Home by Nicole</title>
+  <link rel="stylesheet" href="css/styles.css?v=13">
   <script>document.documentElement.className += ' js';</script>
 </head>
 <body>
@@ -16,37 +16,41 @@
         <img class="brand__logo" src="assets/brand/logo.png" alt="" width="375" height="291">
         <span class="brand__text"><span class="brand__name">Just Like Home</span><span class="brand__sub">by Nicole</span></span>
       </a>
-      <nav class="nav"><a class="btn btn--ghost" href="guide.html">Your guide</a></nav>
+      <nav class="nav"><a class="btn btn--ghost" href="guide.html">My guide</a></nav>
     </div>
   </header>
 
   <section class="pagehero">
     <div class="container">
-      <span class="eyebrow center">For Nicole only</span>
-      <h1>Manage your availability</h1>
-      <p>Add your booked dates below, then follow the two steps at the bottom to put them live.</p>
+      <span class="eyebrow center">Just for you</span>
+      <h1>My availability</h1>
+      <p>Your booked dates live in a Google Sheet. Edit the sheet, the website follows a few minutes later.</p>
     </div>
   </section>
 
-  <section class="section" style="padding-top:clamp(30px,4vw,50px)">
+  <section class="section" style="padding-top:clamp(24px,3vw,40px)">
     <div class="container guide">
 
-      <div class="gcard">
-        <h3 style="margin-top:0">How many dogs can you take at once?</h3>
-        <p style="margin-bottom:.8rem">This sets what counts as "fully booked".</p>
-        <input type="number" id="maxSpaces" min="1" max="10" value="3"
-               style="width:90px;font-size:1.1rem;padding:.55em .7em;border:1.5px solid var(--line);border-radius:12px;background:var(--cream);font-family:inherit;color:inherit">
+      <div style="text-align:center;margin-bottom:2.4rem">
+        <a class="btn" id="sheetLink" href="#" target="_blank" rel="noopener" style="font-size:1.05rem;padding:1em 1.9em">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+          Open my availability sheet
+        </a>
+        <p id="noSheet" style="color:var(--ink-soft);margin-top:1rem;display:none">Your sheet is not connected yet. Message me and I will set it up.</p>
       </div>
 
-      <h2 style="margin-top:2.2rem">Your booked dates</h2>
-      <p>Add a row for each booking or period you are away. Leave the rest alone and those days show as available.</p>
+      <div class="gcard gcard--do">
+        <h3 style="margin-top:0">How to use it</h3>
+        <p>The sheet has three columns. Add a row for each booking or period you are away, and delete the row once it is over.</p>
+        <ul>
+          <li><strong>From</strong> and <strong>To</strong> are the dates, for example <code>3/10/2026</code></li>
+          <li><strong>Status</strong> is either <code>Fully booked</code>, <code>1 space left</code> or <code>2 spaces left</code></li>
+        </ul>
+        <p style="margin-bottom:0">That is genuinely it. Anything not listed shows as available.</p>
+      </div>
 
-      <div id="rows"></div>
-
-      <button class="btn btn--ghost" type="button" id="addRow" style="margin-top:1rem">+ Add dates</button>
-
-      <h2 style="margin-top:2.6rem">Preview</h2>
-      <p>This is exactly how your Availability page will look.</p>
+      <h2 style="margin-top:2.6rem">What your website is showing right now</h2>
+      <p>This is live. If you have just edited the sheet, give it a few minutes and refresh.</p>
       <div class="avc">
         <div class="avc__top">
           <div class="avc__legend">
@@ -55,31 +59,19 @@
             <span><i class="avc__key full"></i> Fully booked</span>
           </div>
         </div>
-        <div class="avc__months" id="previewCal"></div>
+        <div class="avc__months" id="availabilityCal"></div>
       </div>
 
-      <h2 style="margin-top:2.6rem">Putting it live</h2>
-      <div class="gcard gcard--warn">
-        <p><strong>Two steps, about 30 seconds.</strong></p>
-        <ol class="gsteps" style="margin-bottom:0">
-          <li>Click <strong>Copy my dates</strong> below.</li>
-          <li>Click <strong>Open the file on GitHub</strong>, select everything in the box, paste over it, then scroll down and click the green <strong>Commit changes</strong> button. Your website updates within a minute or two.</li>
-        </ol>
+      <div class="gcard" style="margin-top:2rem">
+        <h3 style="margin-top:0">A couple of tips</h3>
+        <ul style="margin-bottom:0">
+          <li>You do not need to log every walk. Just block out the stretches you genuinely cannot take work, like your Ireland trip.</li>
+          <li>People can still enquire on booked dates, they just see that it is taken. That way you can still pass them on to your friends.</li>
+          <li>Nothing you type in the sheet is visible to customers. They only ever see the colours.</li>
+        </ul>
       </div>
 
-      <div style="display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.4rem">
-        <button class="btn" type="button" id="copyBtn">Copy my dates</button>
-        <a class="btn btn--ghost" id="ghLink" target="_blank" rel="noopener"
-           href="https://github.com/andrewpopulin-bit/just-like-home/edit/main/data/availability.json">Open the file on GitHub</a>
-      </div>
-      <p id="copied" style="color:#2F6B41;font-weight:600;margin-top:.9rem;display:none">Copied. Now open the file on GitHub and paste over everything in the box.</p>
-
-      <details style="margin-top:1.6rem">
-        <summary style="cursor:pointer;font-weight:600">Show me what gets copied</summary>
-        <pre id="out" style="background:var(--cream-2);padding:1rem;border-radius:12px;overflow-x:auto;font-size:.85rem;margin-top:.8rem"></pre>
-      </details>
-
-      <p style="margin-top:2rem"><strong>Stuck?</strong> Message me and I will do it for you, genuinely no bother.</p>
+      <p style="margin-top:2rem"><strong>Stuck or want a hand?</strong> Just message me.</p>
     </div>
   </section>
 
@@ -87,12 +79,17 @@
     <div class="container">
       <div class="foot__bottom" style="border-top:0;padding-top:0">
         <span>Just Like Home by Nicole</span>
-        <span>Built by <a href="https://elsio.com.au" target="_blank" rel="noopener" style="color:var(--blush)">Elsio</a></span>
       </div>
     </div>
   </footer>
 
   <script src="js/availability.js"></script>
-  <script src="js/manage.js"></script>
+  <script>
+    (function () {
+      var link = document.getElementById('sheetLink');
+      if (window.JLH_SHEET_EDIT) { link.href = window.JLH_SHEET_EDIT; }
+      else { link.style.display = 'none'; document.getElementById('noSheet').style.display = 'block'; }
+    })();
+  </script>
 </body>
 </html>
