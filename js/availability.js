@@ -20,8 +20,8 @@
 /* ===== THE ONLY TWO LINES THAT NEED SETTING UP =====
    JLH_SHEET_CSV  : File > Share > Publish to web > (sheet) > CSV > Publish
    JLH_SHEET_EDIT : the normal sheet link Nicole opens to edit it            */
-window.JLH_SHEET_CSV  = "";
-window.JLH_SHEET_EDIT = "";
+window.JLH_SHEET_CSV  = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS1RBcI2dJbBEv4D1w8EchS429xjxqn3k1IvvRYYwcu8whuKx98zvLlUgs0ruhtpul3hVrVDXT6Mo9Q/pub?output=csv";
+window.JLH_SHEET_EDIT = "https://docs.google.com/spreadsheets/d/13glVW-BH9I9apWbsvOzw0e9caPoTcuzNijZee2i3Jqg/edit";
 
 (function () {
   'use strict';
