@@ -362,7 +362,13 @@ a.chip--muted:hover{ border-style:solid; }
 .gallery__grid img{ width:100%; height:100%; object-fit:cover; transition:transform .6s ease; display:block; }
 .gallery__grid figure:hover img{ transform:scale(1.06); }
 .gallery__grid figure.tall{ grid-row:span 2; aspect-ratio:auto; }
-@media (max-width:700px){ .gallery__grid{ grid-template-columns:repeat(2,1fr); } .gallery__grid figure.tall{ grid-row:auto; aspect-ratio:1/1; } }
+@media (max-width:700px){
+  .gallery__grid{ grid-template-columns:repeat(2,1fr); }
+  .gallery__grid figure.tall{ grid-row:auto; aspect-ratio:1/1; }
+  /* two columns means an odd number of photos leaves one stranded on the last
+     row. Drop one tile in each state so the grid always ends square. */
+  .gallery:not(.expanded) .gallery__grid figure:nth-of-type(7){ display:none; }
+}
 
 /* CTA with photo background */
 .cta__bg{ position:absolute; inset:0; z-index:0; }
@@ -594,3 +600,8 @@ code{ background:var(--cream-2); padding:.15em .45em; border-radius:6px; font-si
   padding:.7em 1em; cursor:pointer; font-family:inherit; font-size:.9rem; font-weight:600; }
 .mdel:hover{ border-color:var(--rose); color:var(--rose-deep); }
 @media (max-width:720px){ .mrow{ grid-template-columns:1fr 1fr; } .mdel{ grid-column:1 / -1; } }
+
+/* must sit after the .more display rules above, otherwise source order wins */
+@media (max-width:700px){
+  .gallery.expanded .gallery__grid figure:nth-of-type(19){ display:none; }
+}
